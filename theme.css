@@ -1,0 +1,125 @@
+/* Minimal: monochrome, flat, and deliberately quiet. */
+:root {
+  color-scheme: light dark;
+  --gala-color-background: light-dark(#ffffff, #0d0d0d);
+  --gala-color-surface: light-dark(#f5f5f3, #181818);
+  --gala-color-raised: light-dark(#ffffff, #222222);
+  --gala-color-text: light-dark(#141414, #f5f5f2);
+  --gala-color-muted: light-dark(#5e5e59, #b8b8b0);
+  --gala-color-border: light-dark(#767671, #8b8b84);
+  --gala-color-hairline: light-dark(#deded9, #30302e);
+  --gala-color-border-strong: light-dark(#343432, #d1d1ca);
+  --gala-color-accent: light-dark(var(--gala-accent-light, #242424), var(--gala-accent-dark, #f0f0e8));
+  --gala-font-body: ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --gala-font-display: var(--gala-font-body);
+  --gala-font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --gala-weight-display: 620;
+  --gala-leading-tight: 1.06;
+  --gala-leading-body: 1.68;
+  --gala-tracking-tight: -0.028em;
+  --gala-tracking-wide: 0.1em;
+  --gala-step: 0.95rem;
+  --gala-content-width: 64rem;
+  --gala-measure: 62ch;
+  --gala-radius-control: 0.15rem;
+  --gala-radius-surface: 0;
+  --gala-shadow-high: none;
+  --gala-surface-border: transparent;
+  --gala-surface-shadow: none;
+}
+
+:root[data-mode='light'] {
+  color-scheme: light;
+  --gala-color-background: #ffffff;
+  --gala-color-surface: #f5f5f3;
+  --gala-color-raised: #ffffff;
+  --gala-color-text: #141414;
+  --gala-color-muted: #5e5e59;
+  --gala-color-border: #767671;
+  --gala-color-hairline: #deded9;
+  --gala-color-border-strong: #343432;
+  --gala-color-accent: var(--gala-accent-light, #242424);
+}
+
+:root[data-mode='dark'] {
+  color-scheme: dark;
+  --gala-color-background: #0d0d0d;
+  --gala-color-surface: #181818;
+  --gala-color-raised: #222222;
+  --gala-color-text: #f5f5f2;
+  --gala-color-muted: #b8b8b0;
+  --gala-color-border: #8b8b84;
+  --gala-color-hairline: #30302e;
+  --gala-color-border-strong: #d1d1ca;
+  --gala-color-accent: var(--gala-accent-dark, #f0f0e8);
+}
+
+body { padding-block-start: clamp(1rem, 3vw, 2.4rem); }
+
+.gala-site-header {
+  position: relative;
+  margin-block-end: clamp(3rem, 8vw, 7rem);
+  padding-block: 0.6rem;
+  background: transparent;
+  backdrop-filter: none;
+  border-block-end-color: var(--gala-color-border-strong);
+}
+
+.gala-site-name { font-family: var(--gala-font-mono); font-size: var(--gala-text-sm); text-transform: uppercase; }
+.gala-icon-control, .gala-account-control { border-radius: var(--gala-radius-control); }
+
+.gala-article-header { padding-block: 0 clamp(3rem, 8vw, 6rem); }
+.gala-article-header h1 { max-inline-size: 16ch; font-size: clamp(2.8rem, 7vw, 5.6rem); }
+.gala-eyebrow, .gala-card__meta { font-family: var(--gala-font-mono); }
+
+.gala-card-index { display: block; }
+.gala-card-index > li { border-block-start: 1px solid var(--gala-color-hairline); }
+.gala-card-index > li:last-child { border-block-end: 1px solid var(--gala-color-hairline); }
+
+.gala-card {
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.8fr) minmax(16rem, 1.2fr);
+  gap: clamp(1rem, 4vw, 3.5rem);
+  padding: clamp(1.25rem, 3vw, 2.2rem) 0;
+  background: transparent;
+  border: 0;
+}
+
+.gala-card > * { margin-block: 0; }
+.gala-card h2 { align-self: start; }
+.gala-card__description, .gala-card__languages { grid-column: 2; }
+.gala-card-index li:hover .gala-card { transform: none; box-shadow: none; }
+.gala-card-index li:hover h2 a { text-decoration-thickness: 0.12em; }
+
+.gala-tag-chip, .gala-badge {
+  min-block-size: 2rem;
+  border: 0;
+  border-block-end: 1px solid currentcolor;
+  border-radius: 0;
+}
+
+.gala-markdown :where(h2) {
+  padding-block-start: 1rem;
+  border-block-start: 1px solid var(--gala-color-border-strong);
+}
+
+.gala-markdown blockquote {
+  padding-inline-start: 1.5rem;
+  border-inline-start-width: 0.12rem;
+  font-size: 1.08em;
+}
+
+.gala-markdown :where(pre) { border: 1px solid var(--gala-color-hairline); }
+.gala-page-footer { border-block-start-width: 1px; }
+
+@media (max-width: 42rem) {
+  .gala-card { display: block; }
+  .gala-card > * + * { margin-block-start: 0.75rem; }
+  .gala-card__description, .gala-card__languages { grid-column: auto; }
+  .gala-site-header { margin-block-end: 3rem; }
+}
+
+@media print {
+  :root { --gala-color-background: #ffffff; --gala-color-text: #000000; --gala-color-accent: #000000; }
+  .gala-card { display: block; }
+}

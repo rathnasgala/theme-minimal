@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "minimal",
+  "version": "1.0.0",
+  "name": "Minimal",
+  "description": "Monochrome, flat, and quietly structured for manuals and focused reference material.",
+  "framework": {
+    "minimumVersion": "2.0.32",
+    "maximumVersionExclusive": "3.0.0"
+  },
+  "css": {
+    "path": "theme.css",
+    "sha256": "03086c7991e4e163194b5f2b3ae62325ae0c64b557c8b19ee6724df53b975095"
+  }
+}
